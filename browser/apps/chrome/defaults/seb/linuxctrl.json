@@ -10,7 +10,7 @@
 "newBrowserWindowByLinkHeight":"600",
 "newBrowserWindowByLinkPositioning":1,
 "showTaskBar":true,
-"taskBarHeight":40,
+"taskBarHeight":25,
 "allowQuit":true,
 "quitURL":"http:\/\/safeexambrowser.org\/quit",
 "hashedQuitPassword":"5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
