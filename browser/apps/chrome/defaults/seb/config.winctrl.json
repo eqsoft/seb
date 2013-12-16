@@ -1,6 +1,7 @@
 {
 	"prefs"					: {
-							"general.useragent.override" : "SEBKEY"
+							"general.useragent.override" : "SEBKEY",
+							"browser.download.folderList": 0
 						  },										
 	"seb.url"				: "http://www.safeexambrowser.org",
 	"seb.request.header"			: "X-SafeExamBrowser-RequestHash",
@@ -53,7 +54,7 @@
 	"seb.popup.policy"			: 2,
 	"seb.distinct.popup"			: true,
 	"seb.bypass.cache"			: true,	
-	"seb.removeProfile"			: true,
+	"seb.removeProfile"			: false,
 	"seb.screenshot.controller"		: false, 
 	"seb.alert.controller"			: true, 
 	"sc.image.mimetype"			: "image/jpeg",

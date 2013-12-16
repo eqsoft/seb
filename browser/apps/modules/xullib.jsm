@@ -232,8 +232,9 @@ var xullib = (function () {
 			*/
 			// profile
 			// use the new OS.File API ( >= Gecko 18) for profile Handling
-			try {
-				profile["dirs"] = [];
+			
+			try {	
+				profile["dirs"] = [];			
 				let profilePath = OS.Constants.Path.profileDir;
 				let profileDir = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
 				profileDir.initWithPath(profilePath);
@@ -291,6 +292,19 @@ var xullib = (function () {
 				_debug("no default profile: " + defaultProfile.path);
 			}								
 			
+			let downloadDir = profile.dirs[0].clone();
+			
+			downloadDir.append("downloads");
+			if (downloadDir.exists()) {
+				profile["downloadDir"] = downloadDir;
+				_debug("downloadDir: " + profile["downloadDir"].path);
+			}
+			else {
+				profile["downloadDir"] = profile.dirs[0].path;	
+				_debug("downloadDir: " + profile["downloadDir"].path);			
+			}			
+			setPref("browser.download.lastDir",profile["downloadDir"].path,prefs.PREF_STRING);
+			setPref("browser.download.dir",profile["downloadDir"].path,prefs.PREF_STRING);
 			// callback for async loading of json config, the function will finish the initialisation
 			function cb(obj) {			
 				// catch json config params
@@ -393,8 +407,7 @@ var xullib = (function () {
 	}
 	
 	function loadModule(module) {
-		try {	
-							
+		try {								
 			Components.utils.import("resource://modules/" + module + ".jsm");				
 			obj = eval(module);
 			if (!obj) {

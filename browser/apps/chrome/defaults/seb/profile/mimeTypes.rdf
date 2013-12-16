@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<RDF:RDF xmlns:NC="http://home.netscape.com/NC-rdf#"
+         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <RDF:Seq RDF:about="urn:mimetypes:root">
+    <RDF:li RDF:resource="urn:mimetype:application/zip"/>
+  </RDF:Seq>
+  <RDF:Description RDF:about="urn:mimetypes">
+    <NC:MIME-types RDF:resource="urn:mimetypes:root"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="urn:mimetype:handler:application/zip"
+                   NC:alwaysAsk="false"
+                   NC:saveToDisk="true" />
+  </RDF:Description>
+  <RDF:Description RDF:about="urn:mimetype:application/zip"
+                   NC:fileExtensions="zip"
+                   NC:description="IZArc ZIP Archive"
+                   NC:value="application/zip"
+                   NC:editable="true">
+    <NC:handlerProp RDF:resource="urn:mimetype:handler:application/zip"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="urn:root"
+                   NC:en-US_defaultHandlersVersion="-1" />
+</RDF:RDF>

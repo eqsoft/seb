@@ -1,5 +1,5 @@
 {
-"startURL":"http://safeexambrowser.org",
+"startURL":"http://vhrz522.hrz.uni-marburg.de/test.html",
 "browserExamKey":"SEBKEY",
 "browserViewMode":1,
 "mainBrowserWindowWidth":"100%",
@@ -13,7 +13,7 @@
 "taskBarHeight":40,
 "allowQuit":true,
 "quitURL":"http:\/\/safeexambrowser.org\/quit",
-"hashedQuitPassword":"5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+"hashedQuitPassword":"",
 "allowBrowsingBackForward":true,
 "allowFlashFullscreen":false,
 "enableURLContentFilter":false,
@@ -25,7 +25,7 @@
 "sendBrowserExamKey":true,
 "enableURLFilter":false,
 "chooseFileToUploadPolicy":0,
-"hashedAdminPassword":"5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+"hashedAdminPassword":"",
 "embeddedCertificates":
 [
 	{

@@ -314,7 +314,7 @@ var seb = (function() {
 			x.err("something is going wrong. The main seb window is already initialized!");
 			return;
 		}
-				
+		
 		if (x.getParam("seb.removeProfile")) {
 			x.debug("register shutdownObserver...");
 			shutdownObserver.register();
