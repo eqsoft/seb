@@ -942,6 +942,7 @@ var seb = (function() {
 			x.debug("input onFocus: " + evt);
 			try {
 				messageSocket.send("seb.input.focus"); 
+                		evt.target.scrollIntoView();
 			}
 			catch(e){}
 		}
