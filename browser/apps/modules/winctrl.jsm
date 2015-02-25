@@ -75,7 +75,8 @@ var winctrl = (function() {
 						"seb.embedded.certs"			:	embeddedCerts,
             "seb.reload.warning"			:	"showReloadWarning",
             "browser.download.dir"			:	"downloadDirectoryWin",
-            "browser.zoom.full"			:	browserZoomFull
+            "browser.zoom.full"			:	browserZoomFull,
+            "security.enable_java" : "enableJava"
 					},
 		pos = {
 				0 : "left",
