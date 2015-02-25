@@ -75,6 +75,7 @@ var winctrl = (function() {
 						"seb.embedded.certs"			:	embeddedCerts,
             "seb.reload.warning"			:	"showReloadWarning",
             "browser.download.dir"			:	"downloadDirectoryWin",
+            "browser.zoom.full"			:	browserZoomFull
 					},
 		pos = {
 				0 : "left",
@@ -150,10 +151,15 @@ var winctrl = (function() {
 		return ret;
 	}
 
-	function titleBarEnabled() {
-		var ret = (config["browserViewMode"] == 0) ? true : false;
-		return ret;
-	}
+  function titleBarEnabled() {
+    var ret = (config["browserViewMode"] == 0) ? true : false;
+    return ret;
+  }
+
+  function browserZoomFull() {
+    var ret = (config["zoomMode"] == 0) ? true : false;
+    return ret;
+  }
 
     	function urlFilterRegex() {
         	var ret = (config["urlFilterRegex"] == 1) ? true : false;

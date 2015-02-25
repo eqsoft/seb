@@ -12,7 +12,8 @@
 							"network.proxy.socks" : "",
 							"network.proxy.socks_port" : 0,
 							"network.proxy.no_proxies_on" : "localhost,127.0.0.1",
-							"browser.download.dir" : ""
+							"browser.download.dir" : "",
+							"browser.zoom.full" : true
 						  },
 	"seb.url"				: "http://www.safeexambrowser.org",
 	"seb.language"				: "en-US",
