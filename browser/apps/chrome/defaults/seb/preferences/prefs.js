@@ -25,7 +25,7 @@ user_pref("browser.download.manager.useWindow", false);
 user_pref("browser.helperApps.alwaysAsk.force", false);
 user_pref("browser.link.open_newwindow", 2);
 user_pref("browser.startup.homepage_override.mstone", "ignore");
-user_pref("browser.zoom.full", true);
+user_pref("dom.ipc.plugins.flash.disable-protected-mode", true);
 user_pref("extensions.update.enabled", false);
 user_pref("javascript.options.showInConsole", true);
 user_pref("javascript.options.strict", true);

@@ -76,7 +76,15 @@ var winctrl = (function() {
             "seb.reload.warning"			:	"showReloadWarning",
             "browser.download.dir"			:	"downloadDirectoryWin",
             "browser.zoom.full"			:	browserZoomFull,
-            "security.enable_java" : "enableJava"
+            "zoom.maxPercent"			:	zoomMaxPercent,
+            "zoom.minPercent"			:	zoomMinPercent,
+            //"browser.link.open_newwindow" : browserLinkOpenNewWindow,
+            //"browser.link.open_newwindow.restriction" : browserLinkOpenNewWindowRestriction,
+            "plugin.state.flash" : pluginEnableFlash,
+            "plugin.state.java" : pluginEnableJava,
+            "javascript.enabled" : "enableJavaScript",
+            "dom.disable_open_during_load" : "blockPopUpWindows",
+            "layout.spellcheckDefault" : spellcheckDefault
 					},
 		pos = {
 				0 : "left",
@@ -162,20 +170,59 @@ var winctrl = (function() {
     return ret;
   }
 
-    	function urlFilterRegex() {
-        	var ret = (config["urlFilterRegex"] == 1) ? true : false;
-        	return ret;
-    	}
+  function zoomMaxPercent() {
+    var ret = (config["enableZoomPage"] == false && config["enableZoomText"] == false) ? 100 : 300;
+    return ret;
+  }
 
-    	function urlFilterTrustedContent() {
-        	var ret = (config["urlFilterTrustedContent"] == 0) ? true : false;
-        	return ret;
-    	}
+  function zoomMinPercent() {
+    var ret = (config["enableZoomPage"] == false && config["enableZoomText"] == false) ? 100 : 30;
+    return ret;
+  }
 
-    	function browserScreenKeyboard() {
-	        var ret = (config["browserScreenKeyboard"] == 1) ? true : false;
-	        return ret;
-    	}
+  function spellcheckDefault() {
+    var ret = (config["allowSpellCheck"] == true) ? 2 : 0;
+    return ret;
+  }
+
+  function pluginEnableFlash() {
+    var ret = (config["enablePlugIns"] == true) ? 2 : 0;
+    return ret;
+  }
+
+  function pluginEnableJava() {
+    var ret = (config["enableJava"] == true) ? 2 : 0;
+    return ret;
+  }
+
+  function browserLinkOpenNewWindow() {
+    if (config["newBrowserWindowByLinkPolicy"] == 1) {
+      return 1;
+    }
+    return 2;
+  }
+
+  function browserLinkOpenNewWindowRestriction() {
+    if (config["newBrowserWindowByScriptPolicy"] == 1) {
+      return 0;
+    }
+    return 2;
+  }
+
+  function urlFilterRegex() {
+  	var ret = (config["urlFilterRegex"] == 1) ? true : false;
+  	return ret;
+  }
+
+  function urlFilterTrustedContent() {
+  	var ret = (config["urlFilterTrustedContent"] == 0) ? true : false;
+  	return ret;
+  }
+
+  function browserScreenKeyboard() {
+	  var ret = (config["browserScreenKeyboard"] == 1) ? true : false;
+	  return ret;
+  }
 
 	function browserExamKey() {
 		// add some logic

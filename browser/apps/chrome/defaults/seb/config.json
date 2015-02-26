@@ -14,7 +14,13 @@
 							"network.proxy.no_proxies_on" : "localhost,127.0.0.1",
 							"browser.download.dir" : "",
 							"browser.zoom.full" : true,
-							"security.enable_java" : false
+							"zoom.maxPercent" : 300,
+							"zoom.minPercent" : 30,
+							"plugin.state.flash" : 2,
+							"plugin.state.java" : 0,
+							"javascript.enabled" : true,
+							"dom.disable_open_during_load" : false,
+							"layout.spellcheckDefault" : 0
 						  },
 	"seb.url"				: "http://www.safeexambrowser.org",
 	"seb.language"				: "en-US",
