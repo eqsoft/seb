@@ -12,7 +12,7 @@
 							"network.proxy.socks" : "",
 							"network.proxy.socks_port" : 0,
 							"network.proxy.no_proxies_on" : "localhost,127.0.0.1"
-						  },										
+						  },
 	"seb.url"				: "http://www.safeexambrowser.org",
 	"seb.language"				: "en-US",
 	"seb.request.header"			: "X-SafeExamBrowser-RequestHash",
@@ -23,17 +23,17 @@
 	"seb.mainWindow.titlebar.enabled"	: false,
 	"seb.popupWindows.titlebar.enabled"	: true,
 	"seb.mainWindow.screen"			: {
-							"fullsize" : true, 
+							"fullsize" : true,
 							"width" : "100%",
 							"height" : "100%",
-							"position" : "left" 
+							"position" : "left"
 						  },
 	"seb.popupWindows.screen"		: {
-							"fullsize" : false, 
+							"fullsize" : false,
 							"width" : 800,
 							"height" : 600,
 							"position" : "center",
-							"offset" : 40 
+							"offset" : 40
 						  },
 	"seb.trusted.content"			: true,
 	"seb.pattern.regex"			: false,
@@ -50,7 +50,7 @@
 	"seb.load.modifiers"			: "control shift",
 	"seb.reload.keycode"			: "VK_F5",
 	"seb.reload.modifiers"			: "control shift",
-	"seb.reload.warning"			: true,	
+	"seb.reload.warning"			: true,
 	"seb.restart.mode"			: 2,
 	"seb.restart.keycode"			: "VK_F9",
 	"seb.restart.modifiers"			: "control shift",
@@ -65,10 +65,10 @@
 	"seb.showall.keycode"			: "VK_F1",
 	"seb.popup.policy"			: 2,
 	"seb.distinct.popup"			: true,
-	"seb.bypass.cache"			: true,	
+	"seb.bypass.cache"			: true,
 	"seb.removeProfile"			: true,
-	"seb.alert.controller"			: true, 
-	"seb.screenshot.controller"		: true, 
+	"seb.alert.controller"			: true,
+	"seb.screenshot.controller"		: true,
 	"sc.image.mimetype"			: "image/jpeg",
 	"sc.sound"				: true,
 	"seb.togglehidden.enabled"		: true,
@@ -80,7 +80,7 @@
 						  "socket" : "wss://localhost:8443/websocket"
 						  },
 	"seb.restart.url"	: "",
-	"seb.touch.optimized"	: 0,
+	"seb.touch.optimized"	: false,
 	"seb.embedded.certs"	: ""
 }
 }

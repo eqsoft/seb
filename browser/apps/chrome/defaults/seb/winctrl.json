@@ -1,7 +1,7 @@
 {
 "startURL":"https://localhost:8443/demo/index.html",
 "restartExamURL":"https://localhost:8443/demo/q1.html",
-"touchOptimized":0,
+"touchOptimized":false,
 "browserExamKey":"SEBKEY",
 "browserURLSalt":true,
 "browserViewMode":1,

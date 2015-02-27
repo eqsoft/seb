@@ -58,7 +58,7 @@
 	"seb.load.keycode"			: "VK_F6",
 	"seb.load.modifiers"			: "control shift",
 	"seb.reload.keycode"			: "VK_F5",
-	"seb.reload.modifiers"			: "control shift",
+	"seb.reload.modifiers"			: "",
 	"seb.reload.warning"			: true,
 	"seb.restart.mode"			: 2,
 	"seb.restart.keycode"			: "VK_F9",
@@ -90,6 +90,6 @@
 						  "socket" : "wss://localhost:8443/websocket"
 						  },
 	"seb.restart.url"	: "",
-	"seb.touch.optimized"	: 0,
+	"seb.touch.optimized"	: false,
 	"seb.embedded.certs"	: ""
 }

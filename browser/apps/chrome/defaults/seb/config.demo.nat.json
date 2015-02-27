@@ -12,7 +12,7 @@
 							"network.proxy.socks" : "",
 							"network.proxy.socks_port" : 0,
 							"network.proxy.no_proxies_on" : "localhost,127.0.0.1"
-						  },										
+						  },
 	"seb.url"				: "https://localhost:8444/demo/index.html",
 	"seb.request.header"			: "X-SafeExamBrowser-RequestHash",
 	"seb.request.key"			: "71aad4ab9dfd447cc479e6b4a7c9a544e2cafc7f3adeb68b2a21efad68eca4dc",
@@ -36,7 +36,7 @@
 	"seb.load.modifiers"			: "control shift",
 	"seb.reload.keycode"			: "VK_F5",
 	"seb.reload.modifiers"			: "",
-	"seb.reload.warning"			: true,	
+	"seb.reload.warning"			: true,
 	"seb.navigation.enabled"		: true,
 	"seb.back.keycode"			: "VK_LEFT",
 	"seb.back.modifiers"			: "control",
@@ -47,16 +47,16 @@
 	"seb.net.tries.enabled"			: false,
 	"seb.net.max.times"			: 3,
 	"seb.net.timeout"			: 10000,
-	"seb.restart.mode"			: 2,	
+	"seb.restart.mode"			: 2,
 	"seb.popupWindows.titlebar.enabled"	: false,
 	"seb.openwin.width"			: 800,
 	"seb.openwin.height"			: 600,
-	"seb.showall.keycode"			: "VK_F1",	
+	"seb.showall.keycode"			: "VK_F1",
 	"seb.distinct.popup"			: true,
-	"seb.bypass.cache"			: true,	
+	"seb.bypass.cache"			: true,
 	"seb.removeProfile"			: true,
-	"seb.screenshot.controller"		: true, 
-	"seb.alert.controller"			: true, 
+	"seb.screenshot.controller"		: true,
+	"seb.alert.controller"			: true,
 	"sc.image.mimetype"			: "image/jpeg",
 	"sc.sound"				: true,
 	"seb.togglehidden.enabled"		: true,
@@ -68,7 +68,7 @@
 						  "socket" : "wss://localhost:8444/websocket"
 						  },
 	"seb.restart.url"	: "",
-	"seb.touch.optimized"	: 0,
+	"seb.touch.optimized"	: false,
 	"seb.embedded.certs"	: ""
 }
 }

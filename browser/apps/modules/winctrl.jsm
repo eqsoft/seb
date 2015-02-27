@@ -54,7 +54,7 @@ var winctrl = (function() {
 						"seb.messaging.url"			:	"browserMessagingUrl",
 						"seb.messaging.socket"			:	"browserMessagingSocket",
 						"seb.messaging.ping.time"		:	"browserMessagingPingTime",
-						"seb.screenkeyboard.controller"		:	browserScreenKeyboard,
+						"seb.screenkeyboard.controller"		:	"browserScreenKeyboard",
 						"seb.pattern.regex"		    	:	urlFilterRegex,
 						"seb.trusted.content"			:	urlFilterTrustedContent,
 						"seb.whitelist.pattern"			:	"whitelistURLFilter",
@@ -140,7 +140,7 @@ var winctrl = (function() {
 		ret['width'] = config["mainBrowserWindowWidth"];
 		ret['height'] = config["mainBrowserWindowHeight"];
 		ret['position'] = pos[config["mainBrowserWindowPositioning"]];
-		if (config["touchOptimized"] == 1) {
+		if (config["touchOptimized"]) {
 			ret['width'] = "100%";
 			ret['height'] = "100%";
 		}
@@ -153,7 +153,7 @@ var winctrl = (function() {
 		ret['width'] = config["newBrowserWindowByLinkWidth"];
 		ret['height'] = config["newBrowserWindowByLinkHeight"];
 		ret['position'] = pos[config["newBrowserWindowByLinkPositioning"]];
-		if (config["touchOptimized"] == 1) {
+		if (config["touchOptimized"]) {
 			ret['width'] = "100%";
 			ret['height'] = "100%";
 		}
@@ -217,11 +217,6 @@ var winctrl = (function() {
   function urlFilterTrustedContent() {
   	var ret = (config["urlFilterTrustedContent"] == 0) ? true : false;
   	return ret;
-  }
-
-  function browserScreenKeyboard() {
-	  var ret = (config["browserScreenKeyboard"] == 1) ? true : false;
-	  return ret;
   }
 
 	function browserExamKey() {
