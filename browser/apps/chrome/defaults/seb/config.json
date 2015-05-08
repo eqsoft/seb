@@ -1,6 +1,6 @@
 {
 	"prefs"					: {
-							"general.useragent.override" : "SEBKEY",
+							"general.useragent.override" : "Mozilla/5.0 (Windows NT 6.3; rv:37.0) Gecko/20100101 Firefox/37.0 SEB 2.1",
 							"network.proxy.type" : 0,
 							"network.proxy.autoconfig_url" : "",
 							"network.proxy.http" : "",
