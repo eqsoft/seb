@@ -84,7 +84,8 @@ var winctrl = (function() {
             "plugin.state.java" : pluginEnableJava,
             "javascript.enabled" : "enableJavaScript",
             "dom.disable_open_during_load" : "blockPopUpWindows",
-            "layout.spellcheckDefault" : spellcheckDefault
+            "layout.spellcheckDefault" : spellcheckDefault,
+	    "general.useragent.override" : "browserUserAgent"
 					},
 		pos = {
 				0 : "left",
@@ -368,7 +369,7 @@ var winctrl = (function() {
 			var certdb = x.getCertDB();
 			//var certcache = x.getCertCache();
 			//var certlist = x.getCertList();
-			var x509 = certdb.constructX509FromBase64(cert.certificateData);
+			var x509 = certdb.constructX509FromBase64(cert.certificateDataWin);
 			//certlist.addCert(x509); // maybe needed for type 1 Identity Certs
 			//certcache.cacheCertList(certlist);
 			var host = cert.name;
