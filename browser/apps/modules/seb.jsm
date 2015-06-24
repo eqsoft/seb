@@ -265,9 +265,14 @@ var seb = (function() {
 		setBrowserHandler(win); 			// for every window call
 		setReqHeader();
 		setLoadFlag();
-		shutdownEnabled = x.getParam("seb.shutdown.enabled");	
-		x.getParam("seb.embedded.certs"); // trigger ctrl to override default behaviour for embedded certs	
+		shutdownEnabled = x.getParam("seb.shutdown.enabled");
+		
+		//x.getParam("seb.embedded.certs"); // trigger ctrl to override default behaviour for embedded certs	
 		if  (x.getWinType(win) == "main") {
+			var certs = x.getParam("seb.embedded.certs");
+			if (typeof certs == "object") {
+				embeddedCerts(certs);
+			}
 			let hf = win.document.getElementById("hidden.iframe");			
 			if (x.getParam("seb.server.enabled")) {
 				server = x.getParam("seb.server");
@@ -294,7 +299,41 @@ var seb = (function() {
 		}
 		else {	
 			setSize(win);
+			setTitlebar(win);
 		} 	
+	}
+	
+	function embeddedCerts(certs) {
+		x.debug("embedded certs: " + certs.length);
+		for (var i=0;i<certs.length;i++) {
+			addCert(certs[i]);
+		}
+	}
+	
+	function addCert(cert) {
+		//https://developer.mozilla.org/en-US/docs/Cert_override.txt
+		try {
+			var overrideService = Cc["@mozilla.org/security/certoverride;1"].getService(x.Ci.nsICertOverrideService);
+			var flags = overrideService.ERROR_UNTRUSTED | overrideService.ERROR_MISMATCH | overrideService.ERROR_TIME;
+			var certdb = x.getCertDB();
+			//var certcache = x.getCertCache();
+			//var certlist = x.getCertList();
+			var x509 = certdb.constructX509FromBase64(cert.certificateData);
+			//certlist.addCert(x509); // maybe needed for type 1 Identity Certs
+			//certcache.cacheCertList(certlist);
+			var host = cert.name;
+			var port = 443;
+			var fullhost = cert.name.split(":");
+			if (fullhost.length==2) {
+				host = fullhost[0];
+				port = parseInt(fullhost[1]);
+			}
+			x.debug("add cert: " + host + ":" + port + "\n" + cert.certificateData);	
+			overrideService.rememberValidityOverride(host,port,x509,flags,true); 
+		}
+		catch (e) {
+			x.err(e);
+		}
 	}
 	
 	// hidden iFrame for seb server
@@ -838,6 +877,157 @@ var seb = (function() {
 	}
 	
 	function setSize(win) {
+		x.debug("setSize: " + x.getWinType(win));
+		
+		let scr = (x.getWinType(win) == "main") ? x.getParam("seb.mainWindow.screen") : x.getParam("seb.popupWindows.screen");
+		if (scr.fullsize) { // no resizing
+			return;
+		}
+		
+		let os = Services.appinfo.OS.toUpperCase();
+		//x.debug("mainScreen: " + JSON.stringify(scr));
+		
+		let swt = mainWin.screen.width;
+		let sht = mainWin.screen.height;
+		let stp = mainWin.screen.top;
+		let slt = mainWin.screen.left;
+		
+		x.debug("screenWidth: " + swt);
+		x.debug("screenHeight: " + sht);
+		x.debug("screenTop: " + stp);
+		x.debug("screenLeft: " + slt);
+		
+		let sawt = mainWin.screen.availWidth;
+		let saht = mainWin.screen.availHeight;
+		let satp = mainWin.screen.availTop;
+		let salt = mainWin.screen.availLeft;
+		
+		x.debug("screenAvailWidth: " + sawt);
+		x.debug("screenAvailHeight: " + saht);
+		x.debug("screenAvailTop: " + satp);
+		x.debug("screenAvailLeft: " + salt);
+		
+		let wow = win.outerWidth;
+		let wiw = win.innerWidth;
+		let woh = win.outerHeight;
+		let wih = win.innerHeight;
+		
+		x.debug("winOuterWidth: " + wow);
+		x.debug("winInnerWidth: " + wiw);
+		x.debug("winOuterHeight: " + woh);
+		x.debug("winInnerHeight: " + wih);
+		
+		let wsx = win.screenX;
+		let wsy = win.screenY;
+		
+		x.debug("winScreenX: " + wsx);
+		x.debug("winScreenY: " + wsy);
+		
+		let offWidth = win.outerWidth - win.innerWidth;
+		let offHeight = win.outerHeight - win.innerHeight;
+		x.debug("offWidth: " + offWidth);
+		x.debug("offHeight: " + offHeight);
+		
+		let tb = x.getParam("seb.taskbar.enabled");
+		x.debug("showTaskBar:" + tb);
+		
+		if (tb) {
+			let defaultTbh = (sht - saht);
+			let tbh = x.getParam("seb.taskbar.height");
+			tbh = (tbh > 0) ? tbh : defaultTbh;
+			sht -= tbh;
+			x.debug("showTaskBar: change height to " + sht);
+		}
+		
+		let wx = swt;
+		let hx = sht;
+		if (typeof scr.width == "string" && /^\d+\%$/.test(scr.width)) {
+			let w = scr.width.replace("%","");
+			wx = (w > 0) ? ((swt / 100) * w) : swt;
+		}
+		else {
+			wx = (scr.width > 0) ? scr.width : swt;
+		}
+		x.debug("wx: " + wx);
+		
+		if (typeof scr.height == "string" && /^\d+\%$/.test(scr.height)) {
+			var h = scr.height.replace("%","");
+			hx = (h > 0) ? ((sht / 100) * h) : sht;	
+		}
+		else {
+			hx = (scr.height > 0) ? scr.height : sht;
+		}
+		x.debug("hx: " + hx);
+		
+		
+		if (x.getWinType(win) == "main" && x.getParam('seb.mainWindow.titlebar.enabled')) {
+			wx -= getFrameWidth();
+			hx -= getFrameHeight();
+		}
+		
+		if (x.getWinType(win) != "main" && x.getParam('seb.popupWindows.titlebar.enabled')) {
+			wx -= getFrameWidth();
+			hx -= getFrameHeight();
+		}
+		
+		x.debug("resizeTo: " + wx + ":" + hx);
+		win.setTimeout(function() { 
+						this.resizeTo(wx,hx); 
+						this.setTimeout(function () { 
+								setPosition(this); 
+							}, 100 );
+						}, 100);
+		
+		//setPosition(win);
+		//win.setTimeout(function () { setPosition(this) }, 100 );
+		function getFrameWidth() {
+			switch (os) {
+				case "DARWIN" :
+					return 0;
+				case "UNIX" :
+				case "LINUX" :
+					return 0;
+				case "WINNT" :
+					return 0;
+			}
+		}
+		
+		function getFrameHeight() {
+			switch (os) {
+				case "DARWIN" :
+					return 0;
+				case "UNIX" :
+				case "LINUX" :
+					return 20;
+				case "WINNT" :
+					return 0;
+			}
+		}
+		
+		function setPosition(win) {
+			x.debug("setPosition: " + scr.position);
+			switch (scr.position) {
+				case "center" :
+					//x.debug();
+					x.debug("moveTo: " + ((swt/2)-(wx/2)) + ":" + satp);
+					win.moveTo(((swt/2)-(wx/2)),satp);
+					break;
+				case "right" :
+					x.debug("moveTo: " + (swt-wx) + ":" + satp);
+					win.moveTo((swt-wx),satp);
+					break;
+				case "left" :
+					x.debug("moveTo: " + salt + ":" + satp);
+					win.moveTo(salt,satp);
+					break;
+				default :
+					// do nothing
+			}
+		}
+	}
+	
+	/*
+	function setSize(win) {
 		x.debug("set size");
 		let sn = (win === mainWin) ? x.getParam("seb.mainWindow.screen") : x.getParam("seb.popupWindows.screen");
 		
@@ -913,11 +1103,58 @@ var seb = (function() {
 			}
 		}
 	}
+	*/
+	
+	function __setTitlebar(win) { // old
+		let w = (win) ? win : x.getRecentWin();
+		let val = '';
+		if (x.getWinType(win) == 'main') {
+			val = (x.getParam('seb.mainWindow.titlebar.enabled')) ? "-1,-1,-1,-1" : "0,0,0,0";
+		}
+		else {
+			val = (x.getParam('seb.popupWindows.titlebar.enabled')) ? "-1,-1,-1,-1" : "0,0,0,0";
+		}
+		w.document.getElementById("sebWindow").setAttribute("chromemargin",val);
+		//w.document.getElementById("sebWindow").setAttribute("hidechrome",!x.getParam('seb.mainWindow.titlebar.enabled'));
+	}
 	
 	function setTitlebar(win) {
-		let w = (win) ? win : x.getRecentWin(); 
-		w.document.getElementById("sebWindow").setAttribute("hidechrome",!x.getParam('seb.mainWindow.titlebar.enabled'));
-		//x.debug("hidechrome " + w.document.getElementById("sebWindow").getAttribute("hidechrome"));
+		let os = Services.appinfo.OS.toUpperCase();
+		let attr = "";
+		let val = "";
+		let margintop = "0px";
+		let sebwin = win.document.getElementById("sebWindow");
+		let titlebarEnabled = (x.getWinType(win) == 'main') ? x.getParam('seb.mainWindow.titlebar.enabled') : x.getParam('seb.popupWindows.titlebar.enabled');
+		
+		switch (os) { 
+			case "WINNT" :
+				//win.setTimeout(function() { this.fullScreen=true },1);
+				attr = "chromemargin";
+				val = (titlebarEnabled) ? "-1,-1,-1,-1" : "0,-1,-1,-1";
+				margintop = (titlebarEnabled) ? "0px" : "6px";
+				//attr = "hidechrome";
+				//val = (!scr.titlebarEnabled);
+				break;
+			case "DARWIN" : // maybe the best would be hidechrome and resizing
+				attr = "chromemargin";
+				val = (titlebarEnabled) ? "-1,-1,-1,-1" : "0,-1,-1,-1";
+				//attr = "hidechrome";
+				//val = (!scr.titlebarEnabled);
+				//win.setTimeout(function() { this.maximize(); },1);
+				break;
+			case "UNIX" :
+			case "LINUX" :
+				attr = "hidechrome";
+				val = (!titlebarEnabled);
+				break;
+			default :
+				x.err("Unknown OS: " + os)
+		}
+		x.debug(attr + ":" + val);
+		sebwin.style.marginTop = margintop;
+		sebwin.setAttribute(attr,val);
+		//win.maximize();
+		//win.setTimeout(function() { this.maximize(); },1);
 	}
 	
 	function getKeys(win) {		
