@@ -73,6 +73,7 @@ var winctrl = (function() {
 						"network.proxy.socks_port" 		: 	proxySocksPort,
 						"seb.removeProfile"			:	"removeBrowserProfile",
 						"seb.restart.url"			:	"restartExamURL",
+<<<<<<< HEAD
 						"seb.embedded.certs"			:	embeddedCerts,
             "seb.reload.warning"			:	"showReloadWarning",
             "browser.download.dir"			:	"downloadDirectoryWin",
@@ -85,8 +86,10 @@ var winctrl = (function() {
             "plugin.state.java" : pluginEnableJava,
             "javascript.enabled" : "enableJavaScript",
             "dom.disable_open_during_load" : "blockPopUpWindows",
-            "layout.spellcheckDefault" : spellcheckDefault,
-	    "general.useragent.override" : "browserUserAgent"
+            "layout.spellcheckDefault" : spellcheckDefault
+=======
+						"seb.embedded.certs"			:	"embeddedCertificates"
+>>>>>>> f23989c2dcb18ea98924bb479accc4d85b2fb1a0
 					},
 		pos = {
 				0 : "left",
@@ -137,11 +140,23 @@ var winctrl = (function() {
 	}
 
 	function mainWindowScreen() {
+<<<<<<< HEAD
+		var ret = {};
+		ret['fullsize'] = (config["browserViewMode"] == 0) ? false : true;
+		ret['width'] = config["mainBrowserWindowWidth"];
+		ret['height'] = config["mainBrowserWindowHeight"];
+		ret['position'] = pos[config["mainBrowserWindowPositioning"]];
+		if (config["touchOptimized"]) {
+			ret['width'] = "100%";
+			ret['height'] = "100%";
+		}
+=======
 		var ret = {};		 
 		ret['fullsize'] = ((config["browserViewMode"] == 0) || (config["touchOptimized"] == 1)) ? true : false;
 		ret['width'] = config["mainBrowserWindowWidth"];
 		ret['height'] = config["mainBrowserWindowHeight"];
 		ret['position'] = pos[config["mainBrowserWindowPositioning"]];
+>>>>>>> f23989c2dcb18ea98924bb479accc4d85b2fb1a0
 		return ret;
 	}
 
@@ -151,28 +166,19 @@ var winctrl = (function() {
 		ret['width'] = config["newBrowserWindowByLinkWidth"];
 		ret['height'] = config["newBrowserWindowByLinkHeight"];
 		ret['position'] = pos[config["newBrowserWindowByLinkPositioning"]];
-
-		if (config["touchOptimized"] == 1) {
-			ret['fullsize'] = true;
+<<<<<<< HEAD
+		if (config["touchOptimized"]) {
+			ret['width'] = "100%";
+			ret['height'] = "100%";
 		}
 		return ret;
 	}
 
-	function titleBarEnabled() {
-		var ret = ((config["browserViewMode"] == 0) || (config["touchOptimized"] == 1)) ? false : true;
-		return ret;
-	}
-	
-	function popupTitleBarEnabled() {
-		var ret = (config["touchOptimized"] == 1) ? false : true;
-		return ret;
-	}
-	
-    	function browserScreenKeyboard() {
-	        var ret = (config["browserScreenKeyboard"] == 1) ? true : false;
-	        return ret;
-    	}
-	
+  function titleBarEnabled() {
+    var ret = (config["browserViewMode"] == 0) ? true : false;
+    return ret;
+  }
+
   function browserZoomFull() {
     var ret = (config["zoomMode"] == 0) ? true : false;
     return ret;
@@ -217,18 +223,49 @@ var winctrl = (function() {
     return 2;
   }
 
+  function urlFilterRegex() {
+  	var ret = (config["urlFilterRegex"] == 1) ? true : false;
+  	return ret;
+  }
+
+  function urlFilterTrustedContent() {
+  	var ret = (config["urlFilterTrustedContent"] == 0) ? true : false;
+  	return ret;
+  }
+
+=======
+		if (config["touchOptimized"] == 1) {
+			ret['fullsize'] = true;
+		}
+		return ret;
+	}
+	
+	function titleBarEnabled() {
+		var ret = ((config["browserViewMode"] == 0) || (config["touchOptimized"] == 1)) ? false : true;
+		return ret;
+	}
+	
+	function popupTitleBarEnabled() {
+		var ret = (config["touchOptimized"] == 1) ? false : true;
+		return ret;
+	}
+	
     	function urlFilterRegex() {
         	var ret = (config["urlFilterRegex"] == 1) ? true : false;
         	return ret;
     	}
-
 
     	function urlFilterTrustedContent() {
         	var ret = (config["urlFilterTrustedContent"] == 0) ? true : false;
         	return ret;
     	}
     	
-
+    	function browserScreenKeyboard() {
+	        var ret = (config["browserScreenKeyboard"] == 1) ? true : false;
+	        return ret;
+    	}
+	
+>>>>>>> f23989c2dcb18ea98924bb479accc4d85b2fb1a0
 	function browserExamKey() {
 		// add some logic
 		return config["browserExamKey"];
@@ -359,6 +396,7 @@ var winctrl = (function() {
 		}
 		return config["proxies"]["ExceptionsList"].join(",") + ",localhost,127.0.0.1";
 	}
+<<<<<<< HEAD
 
 	function embeddedCerts() {
 		if (!config["embeddedCertificates"]) {
@@ -378,7 +416,7 @@ var winctrl = (function() {
 			var certdb = x.getCertDB();
 			//var certcache = x.getCertCache();
 			//var certlist = x.getCertList();
-			var x509 = certdb.constructX509FromBase64(cert.certificateDataWin);
+			var x509 = certdb.constructX509FromBase64(cert.certificateData);
 			//certlist.addCert(x509); // maybe needed for type 1 Identity Certs
 			//certcache.cacheCertList(certlist);
 			var host = cert.name;
@@ -395,6 +433,9 @@ var winctrl = (function() {
 		}
 	}
 
+=======
+	
+>>>>>>> f23989c2dcb18ea98924bb479accc4d85b2fb1a0
 	function paramHandler(fn) {
 		return eval(fn).call(null);
 	}
