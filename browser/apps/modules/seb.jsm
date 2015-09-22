@@ -85,6 +85,8 @@ var seb = (function() {
 			blackListRegs			= 	[],
 			shutdownUrl			=	"",
 			shutdownPassword		=	false,
+			tryAgainUrl			=	"",
+			elToScrollIntoView		=	null,
 			convertReg			= 	/[-\[\]\/\{\}\(\)\+\?\.\\\^\$\|]/g,
 			wildcardReg			=	/\*/g,
 			stream_handler			=	{
@@ -397,6 +399,17 @@ var seb = (function() {
 					x.debug("messageSocket handled: " + evt.data);
 					reload(null);
 					break;
+				case "SEB.keyboardShown" :
+					x.debug("messageSocket handled: " + evt.data);
+					if (elToScrollIntoView != null) {
+						try {
+							elToScrollIntoView.scrollIntoView(false);
+						}
+						catch (e) { 
+							x.err(e);
+						}
+					}
+					break;
 				default :
 					x.debug("messageSocket not handled msg: " + evt.data); 
 			}
@@ -504,6 +517,7 @@ var seb = (function() {
 							if (net_tries > netMaxTimes) {
 								net_tries = 0; // reset net_tries 
 								// try anyway and take a look what happens (ugly: // ToDo: internal error page and detailed response headers)
+								tryAgainUrl = url;
 								showError(mainWin);
 								return;
 							}
@@ -521,7 +535,12 @@ var seb = (function() {
 						});
 		}
 		else {
-			x.loadPage(mainWin,url,loadFlag);
+			try {
+				x.loadPage(mainWin,url,loadFlag);
+			}
+			catch(e) {
+				x.err("Loading Error: " + e);
+			}
 		}
 	}
 	
@@ -770,6 +789,12 @@ var seb = (function() {
 		let url = getUrl();
 		showLoading(mainWin);
 		loadPage(url);
+	}
+	
+	function tryAgain() {
+		x.debug("try again...");
+		showLoading();
+		loadPage(tryAgainUrl);
 	}
 	
 	function hostRestartUrl() {
@@ -1237,13 +1262,15 @@ var seb = (function() {
 			x.debug("input onFocus");
 			try {
 				messageSocket.send("seb.input.focus");
-				evt.target.scrollIntoView();
+				elToScrollIntoView = evt.target;
+				//evt.target.scrollIntoView();
 			}
 			catch(e){}
 		}
 		function onBlur(evt) {
 			x.debug("input onBlur");
 			try {
+				elToScrollIntoView = null;
 				messageSocket.send("seb.input.blur"); 
 			}
 			catch(e){}
@@ -1496,7 +1523,8 @@ var seb = (function() {
 		forward				:	forward,
 		showAll				:	showAll,
 		showError			:	showError,
-		toggleHidden			:	toggleHidden		
+		toggleHidden			:	toggleHidden,
+		tryAgain			:	tryAgain	
 	};	
 }());
 
