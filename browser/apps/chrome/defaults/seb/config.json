@@ -14,7 +14,7 @@
 							"network.proxy.no_proxies_on" : "localhost,127.0.0.1"
 							
 						  },										
-	"seb.url"				: "http://www.safeexambrowser.org",
+	"seb.url"				: "http://moodle.informatica.hva.nl",
 	"seb.language"				: "en-US",
 	"seb.request.header"			: "X-SafeExamBrowser-RequestHash",
 	"seb.request.key"			: "SEBKEY",
