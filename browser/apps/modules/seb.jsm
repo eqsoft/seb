@@ -1075,7 +1075,6 @@ var seb = (function() {
 		
 		if (tb) {
 			let tbh = x.getParam("seb.taskbar.height");
-			tbh = (tbh && (tbh > 0)) ? tbh : 45;
 			sh -= tbh;
 		}
 		

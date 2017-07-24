@@ -12,7 +12,7 @@
 							"network.proxy.socks" : "",
 							"network.proxy.socks_port" : 0,
 							"network.proxy.no_proxies_on" : "localhost,127.0.0.1"
-						  },										
+						  },
 	"seb.url"				: "http://www.safeexambrowser.org",
 	"seb.language"				: "en-US",
 	"seb.request.header"			: "X-SafeExamBrowser-RequestHash",
@@ -23,17 +23,17 @@
 	"seb.mainWindow.titlebar.enabled"	: true,
 	"seb.popupWindows.titlebar.enabled"	: true,
 	"seb.mainWindow.screen"			: {
-							"fullsize" : true, 
+							"fullsize" : true,
 							"width" : "1950",
 							"height" : "1200",
-							"position" : "center" 
+							"position" : "center"
 						  },
 	"seb.popupWindows.screen"		: {
-							"fullsize" : false, 
+							"fullsize" : false,
 							"width" : 800,
 							"height" : 600,
 							"position" : "center",
-							"offset" : 40 
+							"offset" : 40
 						  },
 	"seb.trusted.content"			: true,
 	"seb.pattern.regex"			: false,
@@ -65,9 +65,9 @@
 	"seb.showall.keycode"			: "VK_F1",
 	"seb.popup.policy"			: 2,
 	"seb.distinct.popup"			: true,
-	"seb.bypass.cache"			: true,	
-	"seb.removeProfile"			: true, 
-	"seb.alert.controller"			: true, 
+	"seb.bypass.cache"			: true,
+	"seb.removeProfile"			: true,
+	"seb.alert.controller"			: true,
 	"seb.screenshot.controller"		: false,
 	"sc.image.mimetype"			: "image/jpeg",
 	"sc.sound"				: false,
@@ -80,7 +80,7 @@
 						  "socket" : "wss://localhost:8443/websocket"
 						  },
 	"seb.restart.url"	: "",
-	"seb.touch.optimized"	: 0,
+	"seb.touch.optimized"	: false,
 	"seb.embedded.certs"	: [{
 				    "certificateData":"MIIEDDCCAvSgAwIBAgIFETIZ9b0wDQYJKoZIhvcNAQEFBQAwgYkxCzAJBgNVBAYTAkRFMQ8wDQYDVQQIEwZIZXNzZW4xEDAOBgNVBAcTB0dpZXNzZW4xDzANBgNVBAoTBmVxc29mdDEOMAwGA1UECxMFYWRtaW4xEjAQBgNVBAMTCWVxc29mdCBDQTEiMCAGCSqGSIb3DQEJARYTZXFzb2Z0ZGV2QGdtYWlsLmNvbTAeFw0xMzA5MTAxNjA5NTFaFw0yMzA5MDgxNjA5NTFaMIGRMQswCQYDVQQGEwJERTEPMA0GA1UECBMGSGVzc2VuMRAwDgYDVQQHEwdHaWVzc2VuMQ8wDQYDVQQKEwZlcXNvZnQxDjAMBgNVBAsTBWFkbWluMRowGAYDVQQDExFlcXNvZnQuZHluZG5zLm9yZzEiMCAGCSqGSIb3DQEJARYTZXFzb2Z0ZGV2QGdtYWlsLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALdnEq0fZqGt70S1\/5Z+GypwKzOKWx9h3ainbgWWrefSNNmMfJG5Rbr0pj0I4S2LhEeCST0OKCV87cuEsadPk643mNZgik4ujI\/\/2OYZlbbp8\/5kBpEKLay0gbN\/rI3sCx9+P4alkBupZs2MbkVfWs2E6yefyXfDQEeQ3DSw6TW5eHx0vlI95KyUUcPqx7xAB9HzCcgR29BFxomrjxrbpHL1MHrNEa5ZR3UJJDej5j448MfTz3inw2DPkHhLPaZqJ013rcg\/gZMugR5GdCcMg+yDRUVxInPmDDH70OA5L5PSvf4BcYXKAa+TVQPwa+O1r18fTUti\/OIGKpjWRp1Qcq8CAwEAAaNxMG8wHgYDVR0RBBcwFYETZXFzb2Z0ZGV2QGdtYWlsLmNvbTA6BglghkgBhvhCAQ0ELRYrbW9kX3NzbCBnZW5lcmF0ZWQgY3VzdG9tIHNlcnZlciBjZXJ0aWZpY2F0ZTARBglghkgBhvhCAQEEBAMCBkAwDQYJKoZIhvcNAQEFBQADggEBAGBuqfdc3cK0qh0zl36b9YF48643wWQHCrg76brW8KBXLJgP6ucTaYpND4XuOTkNvwwF5h\/N0S2lXaP1NIkpT7z8OeOMBpydXEfyPtAOD+6QozQ2oozW00yCXcFWjbl86XCRLGf9Nw0Las2vmc+WNVQbKFmHTNo1uSigf\/e3DO+5AVm1oQFn8rX8M3Qc3mpOvbW2mylqRoSi8QG1rmDD+md3PvBxxr7fSYisJv9M3FwlWaCv+kl3jzoLLnbKrY4\/7V0RrZSlPXy85DlgOU8d5Cp6JyTCori9W4c5Epd+4MjReJBmmZchHAoReS4SNw4JgDjXRCFLAoD9IMzbWI7Pbmg",
 				    "type":0,

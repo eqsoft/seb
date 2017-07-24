@@ -1,6 +1,6 @@
 {
 	"prefs"					: {
-							"general.useragent.override" : "SEBKEY",
+							"general.useragent.override" : "Mozilla/5.0 (Windows NT 6.3; rv:37.0) Gecko/20100101 Firefox/37.0 SEB 2.1",
 							"network.proxy.type" : 0,
 							"network.proxy.autoconfig_url" : "",
 							"network.proxy.http" : "",
@@ -11,9 +11,19 @@
 							"network.proxy.ftp_port" : 0,
 							"network.proxy.socks" : "",
 							"network.proxy.socks_port" : 0,
-							"network.proxy.no_proxies_on" : "localhost,127.0.0.1"
-							
-						  },										
+							"network.proxy.no_proxies_on" : "localhost,127.0.0.1",
+							"browser.download.dir" : "",
+							"browser.zoom.full" : true,
+							"zoom.maxPercent" : 300,
+							"zoom.minPercent" : 30,
+							"plugin.state.flash" : 2,
+							"plugin.state.java" : 0,
+							"javascript.enabled" : true,
+							"dom.disable_open_during_load" : false,
+							"media.navigator.video.enabled" : false,
+							"media.getusermedia.audiocapture.enabled" : false,
+							"layout.spellcheckDefault" : 0
+						  },
 	"seb.url"				: "http://www.safeexambrowser.org",
 	"seb.language"				: "en-US",
 	"seb.request.header"			: "X-SafeExamBrowser-RequestHash",
@@ -24,17 +34,17 @@
 	"seb.mainWindow.titlebar.enabled"	: false,
 	"seb.popupWindows.titlebar.enabled"	: true,
 	"seb.mainWindow.screen"			: {
-							"fullsize" : true, 
+							"fullsize" : true,
 							"width" : 800,
 							"height" : 600,
-							"position" : "center" 
+							"position" : "center"
 						  },
 	"seb.popupWindows.screen"		: {
-							"fullsize" : false, 
+							"fullsize" : false,
 							"width" : 800,
 							"height" : 600,
 							"position" : "center",
-							"offset" : 40 
+							"offset" : 40
 						  },
 	"seb.trusted.content"			: true,
 	"seb.pattern.regex"			: false,
@@ -50,7 +60,7 @@
 	"seb.load.keycode"			: "VK_F6",
 	"seb.load.modifiers"			: "control shift",
 	"seb.reload.keycode"			: "VK_F5",
-	"seb.reload.modifiers"			: "control shift",
+	"seb.reload.modifiers"			: "",
 	"seb.reload.warning"			: true,
 	"seb.restart.mode"			: 2,
 	"seb.restart.keycode"			: "VK_F9",
@@ -66,8 +76,8 @@
 	"seb.showall.keycode"			: "VK_F1",
 	"seb.popup.policy"			: 2,
 	"seb.distinct.popup"			: true,
-	"seb.bypass.cache"			: true,	
-	"seb.removeProfile"			: true, 
+	"seb.bypass.cache"			: true,
+	"seb.removeProfile"			: true,
 	"seb.alert.controller"			: true,
 	"seb.screenkeyboard.controller"		: true,
 	"seb.screenshot.controller"		: false,
@@ -82,6 +92,6 @@
 						  "socket" : "wss://localhost:8443/websocket"
 						  },
 	"seb.restart.url"	: "",
-	"seb.touch.optimized"	: 0,
+	"seb.touch.optimized"	: false,
 	"seb.embedded.certs"	: ""
 }
